@@ -12,8 +12,8 @@ The SLURM examples are connected to each other, because the "multiple-submission
 
 * To submit multiple jobs in a loop: `./submit-slurm-loop.sh`
 * To submit a single job, this example would require you to pass an environment variable like so:
-```bash
 
+```bash
 sbatch -J my_job_name --export=VARIABLE=1 example-slurm-script.sh
 ```
 
