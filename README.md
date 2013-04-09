@@ -3,7 +3,7 @@
 
 #####PBS
 * To submit a single job from a *.sh file: `qsub example-pbs-script.sh`
-* To submit multiple jobs in a loop: `./submit-pbs-loop.sh` or `python submit-pbs-loop.py`
+* To submit multiple jobs in a loop: `./submit-pbs-loop.sh` or `python submit-pbs-loop.py` (These do the same thing, but the Python example is easier to work with).
 
 Note that the latter option does not require a *.sh file to exist for each job. It creates job submission strings and submits them without saving to a file. This is useful for large submissions.
 
