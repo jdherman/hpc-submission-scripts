@@ -17,4 +17,4 @@ The SLURM examples are connected to each other, because the "multiple-submission
 sbatch -J my_job_name --export=VARIABLE=1 example-slurm-script.sh
 ```
 
-But if you modify `example-slurm-script.sh` to not depend on `${VARIABLE}`, then you would not need to do this.
+The job name is optional. If you modify `example-slurm-script.sh` to not depend on `${VARIABLE}`, then you could just run `sbatch example-slurm-script.sh`.
