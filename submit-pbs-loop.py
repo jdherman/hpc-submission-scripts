@@ -11,30 +11,30 @@ import time
 # Loop over your jobs
 for i in range(1, 10):
 
-	# Open a pipe to the qsub command.
-	output, input = popen2('qsub')
-	
-	# Customize your options here
-	job_name = "my_job_%d" % i
-	walltime = "1:00:00"
-	processors = "nodes=1:ppn=1"
-	command = "./my_program -n %d" % i
+    # Open a pipe to the qsub command.
+    output, input = popen2('qsub')
+    
+    # Customize your options here
+    job_name = "my_job_%d" % i
+    walltime = "1:00:00"
+    processors = "nodes=1:ppn=1"
+    command = "./my_program -n %d" % i
 
-	job_string = """#!/bin/bash
-	#PBS -N %s
-	#PBS -l walltime=%s
-	#PBS -l %s
-	#PBS -o ./output/%s.out
-	#PBS -e ./error/%s.err
-	cd $PBS_O_WORKDIR
-	%s""" % (job_name, walltime, processors, job_name, job_name, command)
-	
-	# Send job_string to qsub
-	input.write(job_string)
-	input.close()
-	
-	# Print your job and the system response to the screen as it's submitted
-	print job_string
-	print output.read()
-	
-	time.sleep(0.1)
+    job_string = """#!/bin/bash
+    #PBS -N %s
+    #PBS -l walltime=%s
+    #PBS -l %s
+    #PBS -o ./output/%s.out
+    #PBS -e ./error/%s.err
+    cd $PBS_O_WORKDIR
+    %s""" % (job_name, walltime, processors, job_name, job_name, command)
+    
+    # Send job_string to qsub
+    input.write(job_string)
+    input.close()
+    
+    # Print your job and the system response to the screen as it's submitted
+    print job_string
+    print output.read()
+    
+    time.sleep(0.1)
