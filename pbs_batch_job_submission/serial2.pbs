@@ -5,19 +5,10 @@
 
 cd $PBS_O_WORKDIR
 
-# This will start up 30 serial jobs 3 per node at a time.
-# There are 64 jobs to be run total, only 30 at a time.
+# This will start up 8 serial jobs 4 per node at a time.
+# There are 20 jobs to be run total, only 8 at a time.
 
-# The number to run in total defaults here to 64 or the value
-# of PROCESS_COUNT that is passed in via the qsub line like:
-# qsub -v PROCESS_COUNT=48 serial2.pbs
-#
-
-# The total number to run at once is automatically determined
-# at runtime by the number of CPUs available.
-# qsub -v PROCESS_COUNT=48 -l select=4:ncpus=3 serial2.pbs
-# would make this 12 per pass not 30. No changes to script needed.
-
+# define the totaly number of jobs here 
 total_runs=20
 batch_count=$(cat $PBS_NODEFILE | wc -l)
 count=0
