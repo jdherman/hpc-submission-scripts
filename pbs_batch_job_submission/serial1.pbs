@@ -1,0 +1,8 @@
+#!/bin/bash
+#PBS -l nodes=2:ppn=4
+#PBS -l walltime=96:00:00
+#PBS -j oe
+
+cd $PBS_O_WORKDIR
+
+mpirun -np 8 wrapper.sh 0 
