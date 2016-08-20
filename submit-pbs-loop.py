@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # Example PBS cluster job submission in Python
 
-from popen2 import popen2
+from subprocess import Popen, PIPE
 import time
 
 # If you want to be emailed by the system, include these in job_string:
@@ -12,7 +12,7 @@ import time
 for i in range(1, 10):
 
     # Open a pipe to the qsub command.
-    output, input = popen2('qsub')
+    proc = Popen('qsub', shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE, close_fds=True)
     
     # Customize your options here
     job_name = "my_job_%d" % i
@@ -30,11 +30,11 @@ for i in range(1, 10):
     %s""" % (job_name, walltime, processors, job_name, job_name, command)
     
     # Send job_string to qsub
-    input.write(job_string)
-    input.close()
+    proc.stdin.write(job_string)
+    out, err = proc.communicate()
     
     # Print your job and the system response to the screen as it's submitted
     print job_string
-    print output.read()
+    print out
     
     time.sleep(0.1)
