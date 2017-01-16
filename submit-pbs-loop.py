@@ -34,7 +34,7 @@ for i in range(1, 10):
     out, err = proc.communicate()
     
     # Print your job and the system response to the screen as it's submitted
-    print job_string
-    print out
+    print(job_string)
+    print(out)
     
     time.sleep(0.1)
