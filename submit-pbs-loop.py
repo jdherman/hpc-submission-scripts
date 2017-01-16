@@ -30,7 +30,7 @@ for i in range(1, 10):
     %s""" % (job_name, walltime, processors, job_name, job_name, command)
     
     # Send job_string to qsub
-    proc.stdin.write(job_string)
+    proc.stdin.write(job_string.encode('utf-8'))
     out, err = proc.communicate()
     
     # Print your job and the system response to the screen as it's submitted
